@@ -16,13 +16,58 @@ public class NPC : MonoBehaviour
 
     public DialogueManager dialogueManager;
 
-    void OnMouseDown()
+
+
+    public void OnNPCClicked()
     {
+        if (dialogueManager != null && dialogueManager.IsDialogueOpen)
+            return;
+
+        if (minigame != null && minigame.IsRunning)
+            return;
+
+        if (TryUseItem())
+            return;
+
         TriggerDialogue();
     }
 
+    bool TryUseItem()
+    {
+        var inventory = InventoryManager.Instance;
+
+        if (inventory == null)
+            return false;
+
+        if (inventory.selectedItem == ItemType.None)
+            return false;
+
+        if (inventory.selectedItem == ItemType.Drink)
+        {
+            Debug.Log("NPC dostal drink");
+
+            inventory.RemoveSelectedItem();
+            Debug.Log("Item used");
+
+            return true;
+        }
+
+        //wrong NPC
+        return false;
+    }
+
+
     void TriggerDialogue()
     {
+        //bartender answers only in designated location
+        if (GameState.Instance.currentLocation != Location.Bar && hasMinigame)
+            return;
+
+
+
+        if (minigame != null && minigame.panel.activeSelf)
+            return;
+
         Debug.Log("NPC clicked: " + gameObject.name);
 
         if (hasMinigame)
@@ -33,9 +78,15 @@ public class NPC : MonoBehaviour
                 dialogueManager.onDialogueEnd = null;
 
                 if (GameState.Instance.bartenderCheated)
+                {
                     dialogueManager.StartDialogue(afterCheatDialogue);
+                }
                 else
+                {
                     dialogueManager.StartDialogue(afterFairDialogue);
+                }
+                    
+
 
                 return;
             }
@@ -61,6 +112,19 @@ public class NPC : MonoBehaviour
 
         dialogueManager.StartDialogue(retryDialogue);
     }
+
+    public void OnClickNPC()
+    {
+        if (InventoryManager.Instance.selectedItem == ItemType.Drink)
+        {
+            Debug.Log("NPC dostal drink");
+            InventoryManager.Instance.ClearSelection();
+            return;
+        }
+
+        TriggerDialogue();
+    }
+
 
 
     void StartMinigame()

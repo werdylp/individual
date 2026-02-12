@@ -9,6 +9,10 @@ public class BartenderMinigame : MonoBehaviour
     public TextMeshProUGUI resultText;
     public TextMeshProUGUI recipeText;
 
+    public bool IsRunning => panel.activeSelf;
+
+    public Sprite drinkSprite;
+
     int rum;
     int cola;
 
@@ -73,8 +77,11 @@ public class BartenderMinigame : MonoBehaviour
 
     void Win()
     {
+        Debug.Log("MINIGAME WIN CALLED");
+
         GameState.Instance.bartenderMinigamePlayed = true;
         GameState.Instance.AdvanceProgress();
+        InventoryManager.Instance.AddItem(ItemType.Drink, drinkSprite);
 
         panel.SetActive(false);
     }

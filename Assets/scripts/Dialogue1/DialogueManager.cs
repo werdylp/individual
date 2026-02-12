@@ -29,6 +29,8 @@ public class DialogueManager : MonoBehaviour
 
     public System.Action onDialogueEnd;
 
+    public bool IsDialogueOpen => dialogueBox.activeSelf;
+
     void Start()
     {
         dialogueBox.SetActive(false);
