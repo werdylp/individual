@@ -90,4 +90,18 @@ public class InventoryManager : MonoBehaviour
         ClearSelection();
     }
 
+    public bool HasItem(ItemType type)
+    {
+        foreach (Transform slot in slotsParent)
+        {
+            if (slot.childCount > 0)
+            {
+                InventoryItemButton btn = slot.GetChild(0).GetComponent<InventoryItemButton>();
+                if (btn != null && btn.itemType == type)
+                    return true;
+            }
+        }
+        return false;
+    }
+
 }

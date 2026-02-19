@@ -3,6 +3,18 @@ using static GameState;
 
 public class NPC : MonoBehaviour
 {
+
+    [Header("Reward")]
+    public ItemType rewardItem = ItemType.None;
+    public Sprite rewardSprite;
+    public bool unlockLocationAfterReward = false;
+
+
+    public ItemType requiredItem = ItemType.None;
+    public bool consumeItem = true;
+    public bool unlockNextLocation = false;
+
+    public Dialogue1 afterItemDialogue;
     public Dialogue1 firstDialogue;
     public Dialogue1 retryDialogue;
     public Dialogue1 afterDialogue;
@@ -42,23 +54,31 @@ public class NPC : MonoBehaviour
         if (inventory.selectedItem == ItemType.None)
             return false;
 
-        if (inventory.selectedItem == ItemType.Drink)
-        {
-            Debug.Log("NPC dostal drink");
+        if (inventory.selectedItem != requiredItem)
+            return false;
 
+        if (consumeItem)
             inventory.RemoveSelectedItem();
-            Debug.Log("Item used");
 
-            return true;
-        }
+        if (rewardItem != ItemType.None)
+            InventoryManager.Instance.AddItem(rewardItem, rewardSprite);
 
-        //wrong NPC
-        return false;
+        if (unlockLocationAfterReward)
+            GameState.Instance.AdvanceProgress();
+
+        GameState.Instance.curatorReceivedDrink = true;
+
+        return true;
     }
 
 
     void TriggerDialogue()
     {
+        if (GameState.Instance.curatorReceivedDrink && afterItemDialogue != null)
+        {
+            dialogueManager.StartDialogue(afterItemDialogue);
+            return;
+        }
         //bartender answers only in designated location
         if (GameState.Instance.currentLocation != Location.Bar && hasMinigame)
             return;
@@ -111,18 +131,6 @@ public class NPC : MonoBehaviour
         }
 
         dialogueManager.StartDialogue(retryDialogue);
-    }
-
-    public void OnClickNPC()
-    {
-        if (InventoryManager.Instance.selectedItem == ItemType.Drink)
-        {
-            Debug.Log("NPC dostal drink");
-            InventoryManager.Instance.ClearSelection();
-            return;
-        }
-
-        TriggerDialogue();
     }
 
 

@@ -50,15 +50,11 @@ public class DialogueManager : MonoBehaviour
 
     void ShowNode()
     {
-       
-
-
         ClearChoices();
 
         DialogueNode node = currentDialogue.nodes[currentIndex];
         currentFullText = node.text;
 
-        Debug.Log($"ShowNode index {currentIndex} / count {currentDialogue.nodes.Count}");
         if (currentIndex < 0 || currentIndex >= currentDialogue.nodes.Count)
         {
             EndDialogue();
@@ -81,8 +77,6 @@ public class DialogueManager : MonoBehaviour
             continueButton.gameObject.SetActive(true);
         }
     }
-
-
 
 
 

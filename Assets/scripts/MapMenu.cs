@@ -61,6 +61,13 @@ public class MapMenu : MonoBehaviour
 
     public void GoToStage()
     {
+        if (InventoryManager.Instance.selectedItem != ItemType.StagePass)
+        {
+            Debug.Log("Potøebuješ Stage Pass");
+            return;
+        }
+
+        InventoryManager.Instance.RemoveSelectedItem();
         locationManager.SetLocation(Location.Stage);
         CloseMap();
     }

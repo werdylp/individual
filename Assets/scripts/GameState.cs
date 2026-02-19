@@ -4,8 +4,11 @@ public class GameState : MonoBehaviour
 {
     public static GameState Instance;
 
+    public Difficulty currentDifficulty = Difficulty.Easy;
+
     //location: wc
     public bool talkedToCurator = false;
+    public bool curatorReceivedDrink = false;
 
     //location: bar
     public bool bartenderMinigamePlayed = false;
