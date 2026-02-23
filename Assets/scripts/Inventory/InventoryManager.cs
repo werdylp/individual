@@ -14,6 +14,11 @@ public class InventoryManager : MonoBehaviour
     public Transform slotsParent;
     public GameObject itemPrefab;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     void Awake()
     {
         Instance = this;
