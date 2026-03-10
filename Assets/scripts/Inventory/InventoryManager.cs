@@ -55,6 +55,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (slot.childCount == 0)
             {
+                Debug.Log("Adding item to slot: " + slot.name);
                 GameObject item = Instantiate(itemPrefab);
                 item.transform.SetParent(slot, false);
 

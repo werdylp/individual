@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7acd5888135952143a93910589488f03
+guid: 3324b1a665031d94d8aacc006fb472f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8320084080899779976
-    second: backgroundWC 1_0
+      213: 7625763788661930300
+    second: rightMISS_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: backgroundWC 1_0
+      name: rightMISS_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1440
+        x: 27
+        y: 25
+        width: 1990
+        height: 1988
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88de96fc360e67370800000000000000
-      internalID: 8320084080899779976
+      spriteID: c393b3443c724d960800000000000000
+      internalID: 7625763788661930300
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      backgroundWC 1_0: 8320084080899779976
+      rightMISS_0: 7625763788661930300
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

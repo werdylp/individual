@@ -38,7 +38,6 @@ public class MapMenu : MonoBehaviour
         bool isOpen = mapMenu.activeSelf;
         mapMenu.SetActive(!isOpen);
 
-        // Když otevøu mapu, schovám dialog
         if (!isOpen)
         {
             UpdateMapButtons();
@@ -61,12 +60,14 @@ public class MapMenu : MonoBehaviour
 
     public void GoToStage()
     {
+        Debug.Log("Selected item: " + InventoryManager.Instance.selectedItem);
         if (InventoryManager.Instance.selectedItem != ItemType.StagePass)
         {
-            Debug.Log("Potøebuješ Stage Pass");
+            Debug.Log("StagePass not selected!");
+
             return;
         }
-
+        Debug.Log("Going to stage");
         InventoryManager.Instance.RemoveSelectedItem();
         locationManager.SetLocation(Location.Stage);
         CloseMap();

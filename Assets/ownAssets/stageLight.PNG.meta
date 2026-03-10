@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7acd5888135952143a93910589488f03
+guid: adcaf743197e2c34598a4cced31d00d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8320084080899779976
-    second: backgroundWC 1_0
+      213: -173127620992720082
+    second: stageLight_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: backgroundWC 1_0
+      name: stageLight_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1440
+        x: 1071
+        y: 425
+        width: 821
+        height: 877
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88de96fc360e67370800000000000000
-      internalID: 8320084080899779976
+      spriteID: e23abe1985de89df0800000000000000
+      internalID: -173127620992720082
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      backgroundWC 1_0: 8320084080899779976
+      stageLight_0: -173127620992720082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
